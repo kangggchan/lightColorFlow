@@ -1,0 +1,56 @@
+Fine-tuning & Evaluation – Kang (Team Lead)
+Objectives:
+
+Fine-tune the combined model
+
+Compute and report LPIPS, PSNR, SSIM metrics
+
+Prerequisites
+Familiarity with PyTorch inference
+
+Basic image quality metrics
+
+Tools & Resources
+lpips library: https://github.com/richzhang/PerceptualSimilarity
+
+skimage.metrics for PSNR/SSIM: https://scikit-image.org/
+
+Step-by-Step Tasks
+Load Best Checkpoint
+
+python
+Sao chép
+Chỉnh sửa
+checkpoint = torch.load('best_model.pth')
+model.load_state_dict(checkpoint['model'])
+model.eval()
+Run Inference on Test Set
+
+For each gray frame + references, generate color frame.
+
+Save results to /results/.
+
+Compute Metrics
+
+python
+Sao chép
+Chỉnh sửa
+from skimage.metrics import peak_signal_noise_ratio as psnr, structural_similarity as ssim
+import lpips
+loss_fn = lpips.LPIPS(net='alex')
+PSNR/SSIM: compare generated vs. ground truth color frames.
+
+LPIPS: perceptual distance.
+
+Tabulate & Visualize
+
+Create a CSV or simple markdown table of average metrics.
+
+Optional: plot metric trends over epochs.
+
+Write Evaluation Report
+
+Explain what each metric measures.
+
+Highlight strengths/weaknesses (e.g., temporal consistency vs. color fidelity).
+

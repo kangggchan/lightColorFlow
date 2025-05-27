@@ -1,0 +1,18 @@
+# train.py, eval.py
+
+# Project Timeline (Waterfall Structure)
+
+Week 1: Data Preprocessing
+[=====                  ] Farrukh - Collecting, frame splitting, grayscale conversion
+
+Week 2: Model Implementation
+      [===========         ] Rui & Bhuiyan - Implement ColorFlow lite version
+
+Week 3: Fine-tuning & Evaluation
+                 [========        ] Kang
+ 
+Week 4: Presentation & Demo
+                         [=====          ] Katelyn - Slide prep, live demo design, narration
+
+Week 5: Final Integration, Testing, Rehearsals
+                               [======= ] All - Final bug fix, test on new B&W clips, rehearse

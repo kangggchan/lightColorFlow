@@ -1,0 +1,65 @@
+### Model Implementation – Rui & Bhuiyan
+
+# Objectives:
+- Build a lightweight colorization network and a simple retrieval module
+- Prepare training scripts
+
+# Prerequisites:
+- Python & PyTorch fundamentals
+- Understanding of convolutional neural nets (CNNs)
+# Tools & Resources
+PyTorch tutorials: https://pytorch.org/tutorials/
+Example U-Net implementation: https://github.com/milesial/Pytorch-UNet
+CLIP or ResNet: for retrieval embeddings
+
+# Step-by-Step Tasks:
+
+A. Environment Setup (Both)
+Create a Conda or virtualenv:
+bash
+conda create -n colorflow-lite python=3.8
+conda activate colorflow-lite
+pip install torch torchvision opencv-python tqdm
+
+B. Colorization Network (Rui)
+1. Choose Architecture
+- A small U-Net with MobileNetV2 encoder or a ResNet-based autoencoder.
+
+2. Implement model.py
+- Define encoder, decoder, skip-connections.
+- Input: 1-channel gray frame + N reference embeddings; Output: 3-channel color.
+
+3. Test Forward Pass:
+python
+model = ColorNet()
+gray = torch.randn(1,1,256,256)
+ref_feats = torch.randn(1,5,128)  # if you encode references separately
+out = model(gray, ref_feats)
+assert out.shape == (1,3,256,256)
+
+C. Retrieval Module (Bhuiyan)
+1. Feature Extractor
+- Use a pretrained ResNet-18 (removing final classification layer).
+python
+backbone = torchvision.models.resnet18(pretrained=True)
+feature_extractor = nn.Sequential(*list(backbone.children())[:-1])
+
+2. Frame Retrieval:
+- Given a gray frame, compute cosine similarity with stored reference embeddings.
+- Return top-K references.
+
+3. Save & Load Embeddings
+- Build embeddings.npy for all references.
+- Write a helper to query and return indices.
+
+D. Training Script (Both):
+1. train.py:
+- Load dataset from Farrukh’s .npz files.
+- Instantiate retrieval & colorization modules.
+- Define losses: L1 (pixel), perceptual (VGG) if possible.
+- Optimizer: Adam, lr=1e-4.
+
+2. Logging:
+- Print training/validation losses every epoch.
+- Save checkpoints: best_model.pth.
+

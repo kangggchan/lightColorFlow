@@ -1,0 +1,51 @@
+### Data Preprocessing – Farrukh
+
+# Objectives:
+Collect B&W film clips
+Extract frames and prepare paired inputs (gray frames + color references)
+
+# Prerequisites:
+Basic familiarity with the command line (terminal)
+Python basics: reading/writing images
+
+# Tools & Resources
+FFmpeg (for video↔frame conversion)
+Python 3.8+, with packages: opencv-python, numpy, tqdm
+Tutorial on FFmpeg: https://www.ffmpeg.org/
+OpenCV image I/O guide: https://docs.opencv.org/
+
+# Step-by-Step Tasks:
+
+Collect Source Videos:
+- Choose public-domain B&W films (e.g., Night of the Living Dead)
+- Organize them in /data/raw_videos/.
+
+Extract Frames
+### bash
+/*
+mkdir -p data/frames
+ffmpeg -i data/raw_videos/clip1.mp4 -vf "fps=10" data/frames/clip1_%04d.png
+Adjust fps so you get ~10 frames per second.
+*/
+
+Build Reference Pool:
+- For each clip, pick 3–5 color “reference” images (could be from colorized stills or other films).
+- Place them in /data/references/clip1/.
+
+Preprocess & Split
+- Write a Python script to:
+  - Read each frame and convert to grayscale array.
+  - Normalize pixel values to [0,1].
+  - Pair each gray frame with its reference set.
+  - Split into train/val/test (e.g., 80/10/10) and save .npz or .pt files.
+- Example snippet:
+### python
+/*
+import cv2, numpy as np
+gray = cv2.imread(frame_path, cv2.IMREAD_GRAYSCALE)/255.0
+color_ref = cv2.imread(ref_path)[:, :, ::-1]/255.0  # BGR→RGB
+np.savez(out_path, gray=gray, color_ref=color_ref)
+*/
+
+Deliverable
+A ready-to-use dataset folder with train/val/test .npz (or .pt) pairs.

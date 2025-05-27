@@ -1,0 +1,36 @@
+Presentation & Demo – Katelyn
+
+## Objectives:
+- Build a concise slide deck
+- Prepare a live demo or video showcasing before/after colorization
+
+## Prerequisites
+- Basic slide software (PowerPoint, Google Slides)
+- Simple demo (optional: Streamlit, Flask)
+
+## Tools & Resources
+- Streamlit quickstart: https://docs.streamlit.io/
+- Sample video editor: OBS Studio
+
+## Step-by-Step Tasks
+1. Slide Deck Structure
+- Intro & Motivation (1 slide)
+- Pipeline Overview (1–2 slides: reference, colorization, propagation)
+- Dataset & Preprocessing (1 slide)
+- Model Architecture (1–2 slides)
+- Results & Metrics (2 slides: tables + example frames)
+- Demo (1 slide: URL or embedded video)
+- Conclusion & Future Work (1 slide)
+
+2. Demo Video
+- Record side-by-side video: input gray vs. output color (use OBS).
+- Keep each clip < 10 seconds.
+- Combine them into a single montage (~1 minute).
+
+3. Optional Web Demo
+- A Streamlit app where user uploads a B&W frame and sees colorized output.
+- Deploy locally and capture a short screen-recorded walkthrough.
+
+4. Rehearse Presentation
+- Prepare 5–7 minute talk: who speaks when, key points.
+- Have clear transitions between team members.
