@@ -1,0 +1,35 @@
+{
+  "video1": {
+    "fps": 23.976023976023978,
+    "frame_count": 2761,
+    "width": 1920,
+    "height": 1080,
+    "duration": 115.15670833333333,
+    "extracted_frames": 2402,
+    "effective_duration": 100.15670833333333,
+    "target_fps": 12,
+    "frame_interval": 1
+  },
+  "video3": {
+    "fps": 23.976023976023978,
+    "frame_count": 6615,
+    "width": 1920,
+    "height": 1080,
+    "duration": 275.900625,
+    "extracted_frames": 6256,
+    "effective_duration": 260.900625,
+    "target_fps": 12,
+    "frame_interval": 1
+  },
+  "video2": {
+    "fps": 23.976023976023978,
+    "frame_count": 7620,
+    "width": 1920,
+    "height": 1012,
+    "duration": 317.8175,
+    "extracted_frames": 7261,
+    "effective_duration": 302.8175,
+    "target_fps": 12,
+    "frame_interval": 1
+  }
+}
